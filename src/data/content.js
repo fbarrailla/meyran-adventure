@@ -72,8 +72,7 @@ export const articles = [
     author: 'Ayu Lestari',
     date: 'May 09, 2026',
     readTime: '14 min read',
-    image:
-      'https://images.unsplash.com/photo-1604908554027-9d2e54fb59b9?auto=format&fit=crop&w=1600&q=80',
+    image: '/images/sambal-grandmother.png',
     featured: true
   },
   {
