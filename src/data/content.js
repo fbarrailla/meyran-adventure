@@ -169,6 +169,136 @@ export const articles = [
     ]
   },
   {
+    id: 'a8',
+    category: 'Tech Notes',
+    title: 'React 19 in production: what earned a spot, what did not.',
+    subtitle:
+      'Eighteen months, three apps, one legacy migration — and the quiet death of react-helmet.',
+    excerpt:
+      'Actions that finally make forms feel like a first-class concern, a use() hook I am still working out, Server Components I tried and walked back from, and the one new feature I did not see coming.',
+    author: 'Ines Carvalho',
+    authorBio:
+      'Frontend engineer in Lisbon. Builds component libraries, ships product, has opinions about where Suspense boundaries belong.',
+    date: 'May 16, 2026',
+    readTime: '8 min read',
+    image:
+      'https://images.unsplash.com/photo-1633356122544-f134324a6cee?auto=format&fit=crop&w=1600&q=80',
+    body: [
+      {
+        type: 'p',
+        text:
+          'React 19 has been stable for about eighteen months as I write this — long enough that the early-adopter hot takes have cooled, and the people who waited for "production-ready" have a few migrations under their belt. I have shipped three apps on it and dragged one large legacy codebase across the line. Here are the features that earned a spot in the way I write components, the ones I tried twice and quietly walked back from, and the one I genuinely did not see coming.'
+      },
+      {
+        type: 'h2',
+        text: 'Actions are the headline, and they deserve to be'
+      },
+      {
+        type: 'p',
+        text:
+          'The thing React 19 actually fixed is forms. Or rather, the thing React 19 finally admitted is that forms are where the framework\'s mental model fell apart. You had state, you had a submit handler, you had an "is this thing currently submitting" boolean, you had an "and what if it failed" boolean, and the four of them had to agree about a single click. Actions collapse all of that into one shape.'
+      },
+      {
+        type: 'p',
+        text:
+          'useActionState and useFormStatus are the small primitives that make the bigger ones work. A form action is just a function that receives the form data; the framework tracks pending state and the result. If you are starting a new project, the right shape for a form has changed. The old controlled-input, submit-handler, manual-loading-flag shape still works, but it is the wrong default now. Pick the new defaults.'
+      },
+      {
+        type: 'h2',
+        text: 'useOptimistic, more useful than I expected'
+      },
+      {
+        type: 'p',
+        text:
+          'I was skeptical. I have built optimistic UIs with reducers for years; I did not need a hook for it. I was wrong. The honest reason useOptimistic earns its place is that it makes the failure case obvious. You return a hypothetical state, the framework rolls it back if the action throws, and the lifecycle is something you can reason about in five seconds instead of fifteen minutes.'
+      },
+      {
+        type: 'p',
+        text:
+          'The places I have used it: like-button-style interactions, inline edits, list reorderings — anything where success is the boring case and the rollback path was where my old code used to get sloppy. The place I would not use it: anything where the optimistic state cascades through the rest of the app. That part is still on you, and a hook does not change it.'
+      },
+      {
+        type: 'quote',
+        text:
+          'The right hook is the one you stop noticing. After a year, I stop noticing useOptimistic, and I notice when it is not there.'
+      },
+      {
+        type: 'h2',
+        text: 'The use() hook, slowly'
+      },
+      {
+        type: 'p',
+        text:
+          'use() is the one I am still working out. Reading promises directly in render with use() is a real thing, it works, and it removes the layer of useEffect-and-set-state that most data-fetching boilerplate is made of. The result, when it lands, is fewer hooks and fewer states. The cost is that your Suspense boundaries become actually load-bearing instead of nice-to-have, and if you have never thought hard about where to place them, this is the moment you will.'
+      },
+      {
+        type: 'p',
+        text:
+          'My rule of thumb after eighteen months: use() once you have an honest Suspense story for the screen. Until then, keep your existing data-fetching shape. Mixing the two halfway through a feature is the worst version of both.'
+      },
+      {
+        type: 'h2',
+        text: 'ref as a prop'
+      },
+      {
+        type: 'p',
+        text:
+          'Small change, big day-to-day improvement. forwardRef was a mostly-invisible tax on writing reusable components — you wrote it because you had to, you sometimes forgot, and your colleagues sometimes forgot too. ref as a regular prop is one of those changes I noticed on the first day and then never noticed again, which is the highest compliment a framework can earn from someone who writes a lot of component libraries.'
+      },
+      {
+        type: 'h2',
+        text: 'Document metadata, or, the quiet death of react-helmet'
+      },
+      {
+        type: 'p',
+        text:
+          'You can render <title>, <meta>, and <link> from inside any component, and React hoists them to the document head. It is the small change that does the biggest thing in real apps: a route can own its own metadata without importing a third-party library that has been "maintained" for a generation. I removed react-helmet from two codebases this year and have not missed it once.'
+      },
+      {
+        type: 'p',
+        text:
+          'The stylesheet precedence story is similar — you can declare a stylesheet from a component and React orders it correctly relative to others. CSS-in-JS folks may not care; everyone else, including me, sighed in relief.'
+      },
+      {
+        type: 'h2',
+        text: 'What I tried and walked back from'
+      },
+      {
+        type: 'p',
+        text:
+          'Server Components in a non-Next setup. I tried twice; both times the developer experience was not there yet for a small team that did not want to also build a bundler. If you are on Next or a framework that has done the integration work, ignore me. If you are on your own router and bundler, "stable" is doing a lot of heavy lifting in the sentence that contains it.'
+      },
+      {
+        type: 'p',
+        text:
+          'The new asset-preloading APIs — preload, preinit, prefetchDNS — useful in theory, almost never the bottleneck in practice. I have not removed them where I added them. I have also not added them anywhere since the second app.'
+      },
+      {
+        type: 'h2',
+        text: 'The one I did not see coming'
+      },
+      {
+        type: 'p',
+        text:
+          'Better error messages. Specifically, hydration error messages. The old "text content did not match" was, in the kindest interpretation, an invitation to read your own diff and guess. The new ones tell you which element, on which side, with what content, and most of the time that is enough to find the bug in a single pass. It is the kind of change that does not headline anyone\'s release notes, and it has probably saved me more time this year than every other feature on this list combined.'
+      },
+      {
+        type: 'quote',
+        text:
+          'The best part of a release is often the line you did not read. In React 19, that line was the hydration errors.'
+      },
+      {
+        type: 'h2',
+        text: 'A short checklist if you are starting today'
+      },
+      {
+        type: 'p',
+        text:
+          'Use Actions for forms. Reach for useOptimistic where you would have written a reducer. Try use() once you have an honest Suspense story for the screen, not before. Delete react-helmet. Ignore the noise about Server Components for one more cycle unless you are on a framework that has done the work for you. And the next time you see a hydration error in dev, slow down and read it — they finally earned the attention.'
+      }
+    ]
+  },
+  {
     id: 'a2',
     category: 'Tech Notes',
     title: 'The boring stack that ran my company from a warung.',
