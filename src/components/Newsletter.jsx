@@ -26,10 +26,12 @@ export default function Newsletter() {
         EMAILJS_SERVICE_ID,
         EMAILJS_TEMPLATE_ID,
         {
-          subject: 'New subscriber to the newsletter',
+          subject: 'You’re on the verandah — welcome to Selasar.',
           email: trimmed,
           user_email: trimmed,
           to_email: trimmed,
+          reply_to: trimmed,
+          from_name: 'Selasar',
           subscribed_at: new Date().toISOString(),
           source: 'Selasar newsletter — verandah block'
         },
