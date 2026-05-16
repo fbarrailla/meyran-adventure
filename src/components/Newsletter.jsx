@@ -3,7 +3,7 @@ import emailjs from '@emailjs/browser'
 import styles from './Newsletter.module.css'
 
 const EMAILJS_SERVICE_ID = 'service_nop1bn9'
-const EMAILJS_TEMPLATE_ID = 'template_f6a7oz9'
+const EMAILJS_TEMPLATE_ID = 'template_ircblvw'
 const EMAILJS_PUBLIC_KEY = 'b3hv2vyozRDNnE5PQ'
 
 export default function Newsletter() {
@@ -26,6 +26,7 @@ export default function Newsletter() {
         EMAILJS_SERVICE_ID,
         EMAILJS_TEMPLATE_ID,
         {
+          subject: 'New subscriber to the newsletter',
           email: trimmed,
           user_email: trimmed,
           to_email: trimmed,
