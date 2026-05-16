@@ -57,8 +57,8 @@ export default function Hero() {
         <div className={styles.visual}>
           <figure className={`${styles.tile} ${styles.tileMain}`}>
             <img
-              src="https://images.unsplash.com/photo-1604609177280-c511c54a52ce?auto=format&fit=crop&w=1100&q=80"
-              alt="A morning market in Yogyakarta — baskets of chili and turmeric in soft light"
+              src="/images/pasar-beringharjo.png"
+              alt="A vendor at Pasar Beringharjo in Yogyakarta stands behind woven baskets of red chilis, turmeric and garlic in warm morning light"
               loading="eager"
             />
             <figcaption className={styles.caption}>
