@@ -4,7 +4,7 @@ export default function ArticleCard({ article, variant = 'default' }) {
   const isFeatured = variant === 'featured'
   return (
     <article className={`${styles.card} ${isFeatured ? styles.featured : ''}`}>
-      <a href={`#${article.id}`} className={styles.cardLink} aria-label={article.title}>
+      <a href={`#/article/${article.id}`} className={styles.cardLink} aria-label={article.title}>
         <div className={styles.imageWrap}>
           <img src={article.image} alt="" loading="lazy" />
           <span className={styles.category}>{article.category}</span>
