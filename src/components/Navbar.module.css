@@ -1,0 +1,203 @@
+.header {
+  position: fixed;
+  inset: 0 0 auto 0;
+  z-index: 100;
+  padding-block: 0.75rem;
+  transition: padding 0.5s var(--ease-out-quart),
+              background 0.5s var(--ease-out-quart),
+              backdrop-filter 0.5s var(--ease-out-quart),
+              border-color 0.5s var(--ease-out-quart);
+  border-bottom: 1px solid transparent;
+}
+
+.scrolled {
+  padding-block: 0.5rem;
+  background: color-mix(in oklch, var(--cream-50) 72%, transparent);
+  backdrop-filter: saturate(180%) blur(20px);
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
+  border-bottom-color: color-mix(in oklch, var(--navy-900) 8%, transparent);
+}
+
+.bar {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  justify-content: space-between;
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 1.4rem;
+  letter-spacing: -0.025em;
+  font-variation-settings: "opsz" 144;
+}
+
+.mark {
+  display: inline-flex;
+}
+
+.wordmark {
+  position: relative;
+  transition: color 0.3s var(--ease-out-quart);
+}
+
+.brand::after {
+  content: "";
+  position: absolute;
+  inset: -8px -12px;
+}
+
+.nav {
+  display: none;
+}
+
+@media (min-width: 920px) {
+  .nav {
+    display: block;
+  }
+}
+
+.nav ul {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.nav a {
+  position: relative;
+  display: inline-block;
+  padding: 0.6rem 0.95rem;
+  font-size: 0.92rem;
+  font-weight: 500;
+  color: var(--fg-muted);
+  border-radius: var(--r-pill);
+  transition: color 0.3s var(--ease-out-quart),
+              background 0.3s var(--ease-out-quart);
+}
+
+.nav a:hover {
+  color: var(--fg);
+  background: color-mix(in oklch, var(--navy-900) 5%, transparent);
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.subscribeLink {
+  display: none;
+  font-size: 0.92rem;
+  font-weight: 500;
+  color: var(--fg-muted);
+  padding: 0.5rem 0.6rem;
+  transition: color 0.3s var(--ease-out-quart);
+}
+.subscribeLink:hover { color: var(--fg); }
+
+@media (min-width: 720px) {
+  .subscribeLink { display: inline-block; }
+}
+
+.cta {
+  display: none;
+  font-size: 0.88rem;
+  padding: 0.7rem 1.15rem;
+}
+
+@media (min-width: 720px) {
+  .cta { display: inline-flex; }
+}
+
+.menuToggle {
+  width: 44px;
+  height: 44px;
+  border-radius: var(--r-pill);
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  background: var(--navy-900);
+  color: var(--cream-50);
+}
+
+@media (min-width: 920px) {
+  .menuToggle { display: none; }
+}
+
+.menuLine {
+  display: block;
+  width: 18px;
+  height: 1.5px;
+  background: currentColor;
+  border-radius: 2px;
+  transition: transform 0.4s var(--ease-out-quart), opacity 0.3s;
+  transform-origin: center;
+}
+
+.open1 { transform: translateY(3.25px) rotate(45deg); }
+.open2 { transform: translateY(-3.25px) rotate(-45deg); }
+
+/* Mobile menu */
+.mobileMenu {
+  position: fixed;
+  inset: auto 0 auto 0;
+  top: 64px;
+  background: color-mix(in oklch, var(--cream-50) 92%, transparent);
+  backdrop-filter: blur(24px) saturate(180%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  border-bottom: 1px solid color-mix(in oklch, var(--navy-900) 10%, transparent);
+  padding: 1.5rem var(--gutter) 2rem;
+  display: grid;
+  grid-template-rows: 0fr;
+  opacity: 0;
+  pointer-events: none;
+  transition: grid-template-rows 0.5s var(--ease-out-expo),
+              opacity 0.4s var(--ease-out-quart);
+}
+
+.mobileMenu ul {
+  overflow: hidden;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.mobileMenu a {
+  display: block;
+  padding: 0.85rem 0;
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  letter-spacing: -0.02em;
+  color: var(--fg);
+  border-bottom: 1px solid color-mix(in oklch, var(--navy-900) 6%, transparent);
+}
+
+.mobileCta {
+  margin-top: 1rem;
+  font-family: var(--font-body) !important;
+  font-size: 0.95rem !important;
+  justify-content: center;
+}
+
+.mobileOpen {
+  grid-template-rows: 1fr;
+  opacity: 1;
+  pointer-events: auto;
+}
+
+@media (min-width: 920px) {
+  .mobileMenu { display: none; }
+}
