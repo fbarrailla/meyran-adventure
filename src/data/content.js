@@ -31,8 +31,7 @@ export const features = [
     copy:
       "Long-form portraits of the people we meet on the road — a sambal grandmother in Yogyakarta, a coffee co-op in Aceh, a midnight bus driver in Sulawesi. Stories about the small, deliberate work of being curious in someone else's language.",
     cta: 'Read the encounters',
-    image:
-      'https://images.unsplash.com/photo-1604609177280-c511c54a52ce?auto=format&fit=crop&w=1400&q=80',
+    image: '/images/strangers-encounters.png',
     accent: 'sunset',
     tags: ['Portraits', 'Languages', 'Hosting', 'Community']
   },
@@ -72,7 +71,8 @@ export const articles = [
     author: 'Ayu Lestari',
     date: 'May 09, 2026',
     readTime: '14 min read',
-    image: '/images/sambal-grandmother.png',
+    image:
+      'https://images.unsplash.com/photo-1604908554027-9d2e54fb59b9?auto=format&fit=crop&w=1600&q=80',
     featured: true
   },
   {
