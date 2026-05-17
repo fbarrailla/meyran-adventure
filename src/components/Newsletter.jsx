@@ -26,7 +26,7 @@ export default function Newsletter() {
         EMAILJS_SERVICE_ID,
         EMAILJS_TEMPLATE_ID,
         {
-          subject: 'You’re on the verandah — welcome to Selasar.',
+          subject: 'Meyran Adventure — You’re on the verandah — welcome to Selasar.',
           email: trimmed,
           user_email: trimmed,
           to_email: trimmed,
