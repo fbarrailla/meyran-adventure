@@ -590,8 +590,7 @@ export const articles = [
       'Builds and ships from wherever the wifi will let him. Currently in Ubud, currently behind on emails.',
     date: 'Mar 28, 2026',
     readTime: '13 min read',
-    image:
-      'https://images.unsplash.com/photo-1542317854-aabc44a8e3d8?auto=format&fit=crop&w=1600&q=80',
+    image: '/images/best-cities-remote-work.png',
     body: [
       {
         type: 'p',
